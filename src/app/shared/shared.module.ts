@@ -6,18 +6,15 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { CaricatureGalleryComponent } from './components/caricature-gallery/caricature-gallery.component';
 
-
-
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     ContactUsComponent,
     ArtistListComponent,
-    CaricatureGalleryComponent
+    CaricatureGalleryComponent,
   ],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
+  exports: [HeaderComponent, FooterComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

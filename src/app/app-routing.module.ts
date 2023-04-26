@@ -1,10 +1,52 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [{ path: 'home', loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule) }, { path: 'register', loadChildren: () => import('./features/register/register.module').then(m => m.RegisterModule) }, { path: 'login', loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule) }, { path: 'blog', loadChildren: () => import('./features/blog/blog.module').then(m => m.BlogModule) }, { path: 'artists', loadChildren: () => import('./features/artists/artists.module').then(m => m.ArtistsModule) }, { path: 'caricature-gallery', loadChildren: () => import('./features/caricature-gallery/caricature-gallery.module').then(m => m.CaricatureGalleryModule) }];
+const routes: Routes = [
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./features/components/home/home.component').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./features/components/register/register.component').then(
+        (m) => m.RegisterComponent
+      ),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./features/components/login/login.component').then((m) => m.LoginComponent),
+  },
+  {
+    path: 'blog',
+    loadChildren: () =>
+      import('./features/components/blog/blog.component').then((m) => m.BlogComponent),
+  },
+  {
+    path: 'artists',
+    loadChildren: () =>
+      import('./features/components/artist-list/artist-list.component').then((m) => m.ArtistListComponent),
+  },
+  {
+    path: 'caricature-gallery',
+    loadChildren: () =>
+      import('./features/components/caricature-gallery/caricature-gallery.component').then(
+        (m) => m.CaricatureGalleryComponent
+      ),
+  },
+  {
+    path: 'caricature-gallery-details',
+    loadChildren: () =>
+      import('./features/components/caricature-gallery-details/caricature-gallery-details.component').then(
+        (m) => m.CaricatureGalleryDetailsComponent
+      ),
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

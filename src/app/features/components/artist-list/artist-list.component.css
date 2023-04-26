@@ -1,0 +1,578 @@
+/* .artist-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .artist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .artist-image {
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .artist-info {
+    padding: 20px;
+  }
+  
+  .artist-name {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .artist-speciality {
+    font-size: 18px;
+    color: #666;
+  }
+   */
+
+/* /////////////////////////////////////// */
+/*
+   .card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .card:hover::before {
+    opacity: 1;
+  }
+  
+  .card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 15px;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .card:hover .card-body {
+    bottom: 20px;
+  }
+  
+  .card-title {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    margin-bottom: 20px;
+  }
+  
+  .card-img-top {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .card:hover .card-img-top {
+    transform: scale(1.1);
+  }
+  */
+
+/* ****************************************************************** */
+/*
+  .container {
+    padding: 20px;
+  }
+  
+  .card {
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .card-img-top {
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .card-title {
+    font-weight: bold;
+  }
+  
+  .favorite-btn {
+    color: #555;
+  }
+  
+  .favorite-btn:hover {
+    color: #f00;
+  }
+  
+  .favorite-btn:focus {
+    outline: none;
+  }
+  
+  .fas.fa-heart {
+    color: red;
+  }
+  
+  .card-header {
+    padding: 0;
+  }
+  
+
+
+  .favorite-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .favorite-icon .favorite {
+    color: red;
+  }
+
+  .favorite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px; 
+    Change the font size to make the heart icon bigger
+    cursor: pointer;
+  }
+  
+  */
+
+/* .card {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02);
+} */
+/* 
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #ccc;
+  background-color: aliceblue;
+  transition: transform 0.3s ease-in-out;
+}
+
+.favorite-button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.favorite-button.favorite {
+  color: red;
+  transform: scale(1.2);
+  animation-name: heartBeat;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+} */
+
+/*
+.favorite-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+  
+  .heart-icon {
+    height: 2.5rem;
+    fill: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .heart-icon:hover .heart-outline {
+    stroke: #ff4c4c;
+  }
+  
+  .heart-icon:hover .heart-fill {
+    fill: #ff4c4c;
+  }
+  
+  .favorite-button.favorite .heart-outline {
+    stroke: #ff4c4c;
+  }
+  
+  .favorite-button.favorite .heart-fill {
+    fill: #ff4c4c;
+  }
+  
+  .heart-outline {
+    fill: none;
+    stroke: #9b9b9b;
+    stroke-width: 2;
+  }
+  
+  .heart-fill {
+    fill: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  */
+
+/*
+
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f6f6f6;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .favorite-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .favorite-button:hover {
+    transform: scale(1.2);
+  }
+  
+  .favorite {
+    color: red;
+  }
+  
+  .card-body {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .heart-icon path {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .heart-icon:hover path {
+    fill: red;
+  }
+  
+  .heart {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .heart svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: #fff;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .favorite .heart svg {
+    fill: #ff1493;
+    transform: scale(1.2);
+  }
+  
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .slide-in {
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+
+
+
+  */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  background-color: #f6f6f6;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.card-img-top {
+  block-size: 350px;
+  object-fit: cover;
+}
+
+.favorite-button {
+  position: absolute;
+  width: 40px;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  cursor: pointer;
+  opacity: 0; /* Make the heart icon invisible by default */
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover .favorite-button {
+  opacity: 1; /* Make the heart icon visible on hover */
+  border-radius: 50%;  
+}
+
+.favorite-button:hover {
+  transform: scale(1.2);
+}
+
+.favorite {
+  color: red;
+}
+
+.card-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.heart-icon path {
+  transition: all 0.2s ease-in-out;
+}
+
+.heart-icon:hover path {
+  fill: red;
+}
+
+.heart {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.heart svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.favorite .heart svg {
+  fill: #ff1493;
+  transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.card-img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.card:hover .card-img-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-img-overlay h5 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-img-overlay p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.heart {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  animation: heartPulse 1s ease-in-out infinite;
+}
+
+.heart svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.favorite .heart svg {
+  fill: #ff1493;
+  transform: scale(1.2);
+}
+
+@keyframes heartPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-in-out;
+}

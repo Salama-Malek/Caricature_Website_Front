@@ -1,0 +1,42 @@
+.footer {
+    padding: 1.5rem 0;
+  }
+  
+  .footer p {
+    margin-bottom: 0;
+  }
+  
+  .footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Override Bootstrap styles */
+.navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  /* Custom styles */
+  .footer {
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px; /* Vertical centering */
+  }
+  
+  
+  @media (max-width: 575.98px) {
+    .footer .container {
+      flex-direction: column;
+      text-align: center;
+    }
+    .footer .container div {
+      margin-bottom: 1rem;
+    }
+    .footer .container div:first-child {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
