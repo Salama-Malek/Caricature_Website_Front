@@ -9,6 +9,10 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from '../app-routing.module';
+import { AuthorListComponent } from './components/author-list/author-list.component';
+import { AuthorDetailsComponent } from './components/author-details/author-details.component';
+import { CharacterComponent } from './components/character/character.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +24,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    CharacterComponent,
+    AuthorListComponent,
+    AuthorDetailsComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, AppRoutingModule],
   exports: [
     ArtistDetailsComponent,
     ArtistListComponent,

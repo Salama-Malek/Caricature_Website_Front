@@ -1,1 +1,38 @@
-<p>blog works!</p>
+<div class="container my-3">
+    <h1>Blog</h1>
+    <div class="row">
+      <div class="col-lg-8">
+        <div *ngFor="let post of posts" class="card mb-3">
+          <img class="card-img-top" src="{{ post.imageUrl }}" alt="{{ post.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content }}</p>
+            <a [routerLink]="['/blog', post.id]" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Categories</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let category of categories">
+                <a [routerLink]="['/blog', 'category', category]">{{ category }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Recent Posts</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let post of recentPosts">
+                <a [routerLink]="['/blog', post.id]">{{ post.title }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

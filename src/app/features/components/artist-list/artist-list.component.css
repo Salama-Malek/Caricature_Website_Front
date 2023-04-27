@@ -393,7 +393,8 @@
 
 .card-img-top {
   block-size: 350px;
-  object-fit: cover;
+  /* object-fit: cover; */
+  height: 50vh;
 }
 
 .favorite-button {

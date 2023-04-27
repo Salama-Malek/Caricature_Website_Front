@@ -1,12 +1,11 @@
 <div class="container my-3">
-    <h1>Caricature Gellary</h1>
+    <h1>Authors List</h1>
 </div>
 <div class="container my-3">
     <div class="row my-3">
-        <div class="col-lg-3 col-md-6  mb-4" *ngFor="let caricature of caricatures">
+        <div class="col-lg-3 col-md-6  mb-4" *ngFor="let author of authors">
             <div class="card h-100">
-                <div class="favorite-button" [class.favorite]="caricature.favorite"
-                    (click)="toggleFavorite(caricature)">
+                <div class="favorite-button" [class.favorite]="author.favorite" (click)="toggleFavorite(author)">
                     <div class="heart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path fill="none" d="M0 0h24v24H0V0z" />
@@ -15,10 +14,10 @@
                         </svg>
                     </div>
                 </div>
-                <img src="{{caricature.image}}" class="card-img-top" alt="{{caricature.name}} image">
+                <img src="{{author.image}}" class="card-img-top" alt="{{author.name}} image">
                 <div class="card-body">
-                    <h5 class="card-title">{{caricature.name}}</h5>
-                    <p class="card-text">{{caricature.bio}}</p>
+                    <h5 class="card-title">{{author.name}}</h5>
+                    <p class="card-text">{{author.bio}}</p>
                 </div>
             </div>
         </div>

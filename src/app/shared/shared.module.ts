@@ -5,6 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { CaricatureGalleryComponent } from './components/caricature-gallery/caricature-gallery.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,8 +14,9 @@ import { CaricatureGalleryComponent } from './components/caricature-gallery/cari
     ContactUsComponent,
     ArtistListComponent,
     CaricatureGalleryComponent,
+    
   ],
-  imports: [CommonModule],
+  imports: [CommonModule,AppRoutingModule],
   exports: [HeaderComponent, FooterComponent],
 })
 export class SharedModule {}

@@ -1,0 +1,58 @@
+<!-- <div class="character-container">
+  <div class="character-header">
+    <h2>الشخصيات</h2>
+  </div>
+  <div class="character-list">
+    <div class="character-card" *ngFor="let character of characters">
+      <img [src]="character.image" alt="{{ character.name }}" class="character-image">
+      <div class="character-details">
+        <h3>{{ character.name }}</h3>
+        <p>تم إنشاؤه بواسطة: {{ character.author }}</p>
+        <p>تم رسمه بواسطة: {{ character.artist }}</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- 
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="character-container">
+        <div class="character-header">
+          <h2>الشخصيات</h2>
+        </div>
+        <div class="character-list">
+          <div class="character-card" *ngFor="let character of characters">
+            <img [src]="character.image" alt="{{ character.name }}" class="character-image">
+            <div class="character-details">
+              <h3>{{ character.name }}</h3>
+              <p>تم إنشاؤه بواسطة: {{ character.author }}</p>
+              <p>تم رسمه بواسطة: {{ character.artist }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container character-container">
+  <div class="row">
+    <div class="col-12 character-header">
+      <h2>الشخصيات</h2>
+    </div>
+  </div>
+  <div class="row character-list">
+    <div class="col-md-6 col-lg-4 character-card" *ngFor="let character of characters">
+      <img [src]="character.image" alt="{{ character.name }}" class="character-image">
+      <div class="character-details">
+        <h3>{{ character.name }}</h3>
+        <p>تم إنشاؤه بواسطة: {{ character.author }}</p>
+        <p>تم رسمه بواسطة: {{ character.artist }}</p>
+      </div>
+    </div>
+  </div>
+</div>
