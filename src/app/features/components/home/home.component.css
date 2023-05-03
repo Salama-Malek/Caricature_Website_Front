@@ -1,0 +1,93 @@
+/* home.component.scss */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background: linear-gradient(to bottom, #ffb347, #ffcc33, #ff704d);
+    animation-name: background-animation;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes background-animation {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 0%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+  
+  .home-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    animation-name: title-animation;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes title-animation {
+    0% {
+      transform: rotate(0deg);
+      color: #ff9800;
+    }
+    25% {
+      transform: rotate(5deg);
+      color: #ff5722;
+    }
+    50% {
+      transform: rotate(0deg);
+      color: #f44336;
+    }
+    75% {
+      transform: rotate(-5deg);
+      color: #e91e63;
+    }
+    100% {
+      transform: rotate(0deg);
+      color: #ff9800;
+    }
+  }
+  
+  .home-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .home-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f44336;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .home-btn:hover {
+    transform: scale(1.1);
+    background-color: #f44336;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  

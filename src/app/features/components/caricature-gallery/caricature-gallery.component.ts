@@ -1,10 +1,21 @@
 import { Component } from '@angular/core';
 interface Caricature {
-  name: string;
+  name: string; //no name
   bio: string;
   image: string;
   favorite: boolean;
 }
+
+
+/*
+        character: 'Naruto Uzumaki',
+        author: 'Masashi Kishimoto',
+        artist: 'Masashi Kishimoto',
+        description: 'The main character of the Naruto series.', //no description
+        image: 'https://i.imgur.com/6dNpTJw.png'
+        favorite: 
+
+*/
 @Component({
   selector: 'app-caricature-gallery',
   templateUrl: './caricature-gallery.component.html',
