@@ -1,169 +1,50 @@
-<!-- <div class="container my-3">
-    <h1>Caricature Gellary</h1>
-</div>
-<div class="container my-3">
-    <div class="row my-3">
-        <div class="col-lg-3 col-md-6  mb-4" *ngFor="let caricature of caricatures">
-            <div class="card h-100">
-                <div class="favorite-button" [class.favorite]="caricature.favorite"
-                    (click)="toggleFavorite(caricature)">
-                    <div class="heart">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="none" d="M0 0h24v24H0V0z" />
-                            <path
-                                d="M12 21.35l-1.45-1.32C4.99 14.79 2 11.58 2 8.5c0-2.8 2.2-5 5-5 1.93 0 3.63.89 5 2.25 1.37-1.36 3.07-2.25 5-2.25 2.8 0 5 2.2 5 5 0 3.08-2.99 6.29-8.55 11.53L12 21.35z" />
-                        </svg>
-                    </div>
-                </div>
-                <img src="{{caricature.image}}" class="card-img-top" alt="{{caricature.name}} image">
-                <div class="card-body">
-                    <h5 class="card-title">{{caricature.name}}</h5>
-                    <p class="card-text">{{caricature.bio}}</p>
-                </div>
+<div class="container-xxl py-5">
+    <div class="container mt-5">
+      <div
+        class="text-center mx-auto pb-4 wow fadeInUp"
+        data-wow-delay="0.1s"
+        style="max-width: 600px"
+      >
+        <section
+          id="breadcrumbs"
+          style="background-color: white"
+          class="breadcrumbs"
+        >
+          <div class="container mt-5">
+            <div class="d-flex justify-content-center align-items-center">
+              <h1 style="color: #3a95e4; font-weight: bold; font-size: 50px">
+                المؤلفون
+              </h1>
             </div>
-        </div>
-    </div>
-</div> -->
-
-
-<!-- <div class="container my-3">
-    <h1 class="text-center text-white mb-5 display-4 font-weight-bold animate__animated animate__bounceIn">Caricature Gallery</h1>
-</div>
-<div class="container my-3">
-    <div class="row my-3">
-        <div class="col-lg-3 col-md-6 mb-4 animate__animated animate__zoomIn" *ngFor="let caricature of caricatures">
-            <div class="card h-100 border-0">
-                <div class="favorite-button" [class.favorite]="caricature.favorite"
-                    (click)="toggleFavorite(caricature)">
-                    <div class="heart">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="none" d="M0 0h24v24H0V0z" />
-                            <path
-                                d="M12 21.35l-1.45-1.32C4.99 14.79 2 11.58 2 8.5c0-2.8 2.2-5 5-5 1.93 0 3.63.89 5 2.25 1.37-1.36 3.07-2.25 5-2.25 2.8 0 5 2.2 5 5 0 3.08-2.99 6.29-8.55 11.53L12 21.35z" />
-                        </svg>
-                    </div>
-                </div>
-                <img src="{{caricature.image}}" class="card-img-top" alt="{{caricature.name}} image">
-                <div class="card-body">
-                    <h5 class="card-title text-center font-weight-bold mb-3">{{caricature.name}}</h5>
-                    <p class="card-text">{{caricature.bio}}</p>
-                </div>
+          </div>
+        </section>
+      </div>
+      <div class="row gy-5 gx-4">
+        <div
+          class="col-md-6 col-lg-4 wow fadeInUp"
+          data-wow-delay="0.1s"
+          *ngFor="let caricature of caricatures"
+        >
+        <!-- {{author | json}} -->
+          <div class="service-item">
+            <img class="img-fluid" src="http://localhost:5000/assets/upload/{{caricature.image}}" alt="" />
+            <div class="service-img">
+              <img class="img-fluid" src="http://localhost:5000/assets/upload/{{caricature.image}}" alt="" />
             </div>
-        </div>
-    </div>
-</div> -->
-
-
-
-
-<!--
-<div class="container my-3">
-    <h1 class="text-center display-4">Caricature Gallery</h1>
-  </div>
-
-  <div class="container my-3">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-      <div class="col mb-4" *ngFor="let caricature of caricatures">
-        <div class="card h-100 border-0">
-          <div class="image-wrapper position-relative">
-            <div class="favorite-button position-absolute top-0 end-0" [class.favorite]="caricature.favorite"
-              (click)="toggleFavorite(caricature)">
-              <div class="heart">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <path fill="none" d="M0 0h24v24H0V0z" />
-                  <path
-                    d="M12 21.35l-1.45-1.32C4.99 14.79 2 11.58 2 8.5c0-2.8 2.2-5 5-5 1.93 0 3.63.89 5 2.25 1.37-1.36 3.07-2.25 5-2.25 2.8 0 5 2.2 5 5 0 3.08-2.99 6.29-8.55 11.53L12 21.35z" />
-                </svg>
+            <div class="service-detail">
+              <div class="service-title">
+                <hr class="w-25" />
+                <h3 class="mb-0">{{ caricature.authorName }}</h3>
+                <hr class="w-25" />
+              </div>
+              <div class="service-text">
+                <p class="text-white mb-0">{{ caricature.artistName}}</p>
               </div>
             </div>
-            <img src="{{caricature.image}}" class="card-img-top" alt="{{caricature.name}} image">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">{{caricature.name}}</h5>
-            <p class="card-text">{{caricature.bio}}</p>
+            <a class="btn btn-primary" href="">Read More</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-   -->
-
-
-
-    <!-- Team Start -->
-    <div class="container-xxl py-6 my-5">
-      <div class="container">
-          <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-              <h1 class="text-primary text-uppercase mb-2 my-7">معرض الكاركتير</h1>
-              <h1 class="display-6 mb-4">We Have Great Experience Of Driving</h1>
-          </div>
-          <div class="row g-0 team-items">
-              <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                  <div class="team-item position-relative">
-                      <div class="position-relative">
-                          <img style="width:400px ;height:400px" class="img-fluid" src="../../../../assets/img/hero-bg.jpg" alt="">
-                          <div class="team-social text-center">
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-twitter"></i></a>
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                      <div class="bg-light text-center p-4">
-                          <h5 class="mt-2">Full Name</h5>
-                          <span>Trainer</span>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                  <div class="team-item position-relative">
-                      <div class="position-relative">
-                        <img style="width:400px ;height:400px" class="img-fluid" src="../../../../assets/img/hero-bg.jpg" alt="">
-                          <div class="team-social text-center">
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-twitter"></i></a>
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                      <div class="bg-light text-center p-4">
-                          <h5 class="mt-2">Full Name</h5>
-                          <span>Trainer</span>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                  <div class="team-item position-relative">
-                      <div class="position-relative">
-                        <img style="width:400px ;height:400px" class="img-fluid" src="../../../../assets/img/hero-bg.jpg" alt="">
-                          <div class="team-social text-center">
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-twitter"></i></a>
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                      <div class="bg-light text-center p-4">
-                          <h5 class="mt-2">Full Name</h5>
-                          <span>Trainer</span>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                  <div class="team-item position-relative">
-                      <div class="position-relative">
-                        <img style="width:400px ;height:400px" class="img-fluid" src="../../../../assets/img/hero-bg.jpg" alt="">
-                          <div class="team-social text-center">
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-twitter"></i></a>
-                              <a class="btn btn-square btn-outline-primary border-2 m-1" href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                      <div class="bg-light text-center p-4">
-                          <h5 class="mt-2">Full Name</h5>
-                          <span>Trainer</span>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!-- Team End -->
-
+  

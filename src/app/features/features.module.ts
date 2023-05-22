@@ -28,8 +28,10 @@ import { CharacterComponent } from './components/character/character.component';
     AuthorListComponent,
     AuthorDetailsComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, AppRoutingModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, AppRoutingModule,],
   exports: [
+    AuthorDetailsComponent,
+    AuthorListComponent,
     ArtistDetailsComponent,
     ArtistListComponent,
     BlogComponent,
@@ -40,4 +42,6 @@ import { CharacterComponent } from './components/character/character.component';
     RegisterComponent,
   ],
 })
-export class FeaturesModule {}
+export class FeaturesModule {
+
+}

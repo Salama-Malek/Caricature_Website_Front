@@ -130,6 +130,14 @@ body {
   color: #444444;
 }
 
+
+#carouselExampleCaptions img{
+  height: 600px;
+  background-size: cover;
+}
+
+
+
 a {
   color: #47b2e4;
   text-decoration: none;
