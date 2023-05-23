@@ -1,36 +1,36 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Charactert } from '../models/Character.model';
+// import { Injectable } from '@angular/core';
+// import { HttpClient } from '@angular/common/http';
+// import { Observable } from 'rxjs';
+// import { Character } from 'src/app/features/Interfaces/character'; 
 
-@Injectable({
-  providedIn: 'root',
-})
-export class CharacterService {
-  private apiUrl = 'https://example.com/api/characters';
+// @Injectable({
+//   providedIn: 'root',
+// })
+// export class CharacterService {
+//   private apiUrl = 'https://example.com/api/characters';
 
-  constructor(private http: HttpClient) {}
+//   constructor(private http: HttpClient) {}
 
-  getCharacters(): Observable<Charactert[]> {
-    return this.http.get<Charactert[]>(this.apiUrl);
-  }
+//   getCharacters(): Observable<Character[]> {
+//     return this.http.get<Character[]>(this.apiUrl);
+//   }
 
-  getCharacter(id: number): Observable<Charactert> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Charactert>(url);
-  }
+//   getCharacter(id: number): Observable<Character> {
+//     const url = `${this.apiUrl}/${id}`;
+//     return this.http.get<Character>(url);
+//   }
 
-  addCharacter(character: Charactert): Observable<Charactert> {
-    return this.http.post<Charactert>(this.apiUrl, character);
-  }
+//   addCharacter(character: Character): Observable<Character> {
+//     return this.http.post<Character>(this.apiUrl, character);
+//   }
 
-  updateCharacter(character: Charactert): Observable<Charactert> {
-    const url = `${this.apiUrl}/${character.id}`;
-    return this.http.put<Charactert>(url, character);
-  }
+//   updateCharacter(character: Character): Observable<Character> {
+//     const url = `${this.apiUrl}/${character._id}`;
+//     return this.http.put<Character>(url, character);
+//   }
 
-  deleteCharacter(id: number): Observable<Charactert> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.delete<Charactert>(url);
-  }
-}
+//   deleteCharacter(id: number): Observable<Character> {
+//     const url = `${this.apiUrl}/${id}`;
+//     return this.http.delete<Character>(url);
+//   }
+// }

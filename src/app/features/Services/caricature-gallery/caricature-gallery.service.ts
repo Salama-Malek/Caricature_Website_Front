@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CaricatureGalleryService {
 
-  private apiUrl = 'http://localhost:5000/caricatures'; // Replace with your API URL
+  private apiUrl = 'http://localhost:5000/caricature'; // Replace with your API URL
 
   constructor(private http: HttpClient) { }
 

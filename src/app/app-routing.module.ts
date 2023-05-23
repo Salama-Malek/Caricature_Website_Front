@@ -36,11 +36,15 @@ const routes: Routes = [
     path: 'caricature-gallery-details/:id',
     component: CaricatureGalleryDetailsComponent,
   },
-  
+  {
+    path: 'artist/:id',
+    component: ArtistDetailsComponent
+  }
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

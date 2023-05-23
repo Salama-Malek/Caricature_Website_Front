@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CommentService } from '../services/comment.service';
-import { Comment } from '../models/comment.model';
+// import { CommentService } from '../services/comment.service';
+// import { Comment } from '../models/comment.model';
 
 @Component({
   selector: 'app-comment-management',
@@ -10,21 +10,24 @@ import { Comment } from '../models/comment.model';
 export class CommentManagementComponent implements OnInit {
   comments: Comment[] = [];
 
-  constructor(private commentService: CommentService) {}
+  constructor() {}
+  // constructor(private commentService: CommentService) {}
 
   ngOnInit(): void {
-    this.getComments();
   }
+  // ngOnInit(): void {
+  //   this.getComments();
+  // }
 
-  getComments(): void {
-    this.commentService
-      .getComments()
-      .subscribe((comments) => (this.comments = comments));
-  }
+  // getComments(): void {
+  //   this.commentService
+  //     .getComments()
+  //     .subscribe((comments) => (this.comments = comments));
+  // }
 
-  deleteComment(commentId: number): void {
-    this.commentService.deleteComment(commentId).subscribe(() => {
-      this.comments = this.comments.filter((c) => c.id !== commentId);
-    });
-  }
+  // deleteComment(commentId: number): void {
+  //   this.commentService.deleteComment(commentId).subscribe(() => {
+  //     this.comments = this.comments.filter((c) => c.id !== commentId);
+  //   });
+  // }
 }

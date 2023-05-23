@@ -20,7 +20,6 @@ import { AppRoutingModule } from '../app-routing.module';
     ArtistManagementComponent,
     AuthorManagementComponent,
     CharacterManagementComponent,
-    CaricatureManagementComponent,
     CommentManagementComponent,
   ],
   imports: [CommonModule, FormsModule, AdminRoutingModule, AppRoutingModule],
@@ -30,7 +29,6 @@ import { AppRoutingModule } from '../app-routing.module';
     ArtistManagementComponent,
     AuthorManagementComponent,
     CharacterManagementComponent,
-    CaricatureManagementComponent,
     CommentManagementComponent,
   ],
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CharacterService } from '../services/character.service';
-import { Charactert } from './../models/Character.model';
+// import { CharacterService } from '../services/character.service';
+// import { Charactert } from './../models/Character.model';
 
 @Component({
   selector: 'app-character-management',
@@ -8,25 +8,26 @@ import { Charactert } from './../models/Character.model';
   styleUrls: ['./character-management.component.css'],
 })
 export class CharacterManagementComponent implements OnInit {
-  characters: Charactert[] = [];
+  // characters: Charactert[] = [];
 
-  constructor(private characterService: CharacterService) {}
+  constructor() {}
+  // constructor(private characterService: CharacterService) {}
 
   ngOnInit(): void {
-    this.getCharacters();
+    // this.getCharacters();
   }
 
-  getCharacters(): void {
-    this.characterService
-      .getCharacters()
-      .subscribe((characters) => (this.characters = characters));
-  }
+  // getCharacters(): void {
+  //   this.characterService
+  //     .getCharacters()
+  //     .subscribe((characters) => (this.characters = characters));
+  // }
 
-  deleteCharacter(character: any): void {
-    this.characterService
-      .deleteCharacter(character)
-      .subscribe(
-        () => (this.characters = this.characters.filter((c) => c !== character))
-      );
-  }
+  // deleteCharacter(character: any): void {
+  //   this.characterService
+  //     .deleteCharacter(character)
+  //     .subscribe(
+  //       () => (this.characters = this.characters.filter((c) => c !== character))
+  //     );
+  // }
 }

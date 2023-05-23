@@ -8,7 +8,7 @@ import { Artist } from '../../../features/Interfaces/artists';
 })
 export class ArtistListService {
 
-  private apiUrl = 'http://localhost:5000/artists'; 
+  private apiUrl = 'http://localhost:5000/artist'; 
 
   constructor(private http: HttpClient) { }
 
