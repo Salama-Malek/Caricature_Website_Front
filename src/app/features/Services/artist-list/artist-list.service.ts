@@ -21,17 +21,17 @@ export class ArtistListService {
     return this.http.get<Artist>(url);
   }
 
-  // createArtist(artist: Artist): Observable<Artist> {
-  //   return this.http.post<Artist>(this.apiUrl, artist);
-  // }
+  createArtist(artist: Artist): Observable<Artist> {
+    return this.http.post<Artist>(this.apiUrl, artist);
+  }
 
-  // updateArtist(id: string, artist: Artist): Observable<Artist> {
-  //   const url = `${this.apiUrl}/${id}`;
-  //   return this.http.put<Artist>(url, artist);
-  // }
+  updateArtist(id: string, artist: Artist): Observable<Artist> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<Artist>(url, artist);
+  }
 
-  // deleteArtist(id: string): Observable<void> {
-  //   const url = `${this.apiUrl}/${id}`;
-  //   return this.http.delete<void>(url);
-  // }
+  deleteArtist(id: string): Observable<void> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<void>(url);
+  }
 }

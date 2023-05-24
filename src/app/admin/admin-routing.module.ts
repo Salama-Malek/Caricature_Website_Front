@@ -7,7 +7,6 @@ import { CharacterManagementComponent } from './components/character-management/
 import { CaricatureManagementComponent } from './components/caricature-management/caricature-management.component';
 import { CommentManagementComponent } from './components/comment-management/comment-management.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
-
 const routes: Routes = [
   {
     path: '',
