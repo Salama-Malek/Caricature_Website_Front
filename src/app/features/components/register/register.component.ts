@@ -40,15 +40,15 @@ export class RegisterComponent {
     // Call the register method of the AuthService to register the user
     this.authService
       .register({ firstName, lastName, email, password, subscribe })
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (response) => {
           console.log('User registered successfully:', response);
           // Redirect the user to the login page or show a success message
         },
-        (error) => {
+        error: (error) => {
           console.log('Registration failed:', error);
           // Show an error message to the user
         }
-      );
+      });
   }
 }

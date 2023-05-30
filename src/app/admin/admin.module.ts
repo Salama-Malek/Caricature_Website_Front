@@ -11,6 +11,7 @@ import { CaricatureManagementComponent } from './components/caricature-managemen
 import { CommentManagementComponent } from './components/comment-management/comment-management.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 @NgModule({
   declarations: [
     AdminDashboardComponent,
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     AuthorManagementComponent,
     CharacterManagementComponent,
     CommentManagementComponent,
+    AdminHomeComponent,
 
   ],
   imports: [CommonModule, FormsModule, AdminRoutingModule, AppRoutingModule ,HttpClientModule],
@@ -30,5 +32,6 @@ import { HttpClientModule } from '@angular/common/http';
     CharacterManagementComponent,
     CommentManagementComponent,
   ],
+  bootstrap: [AdminDashboardComponent],
 })
 export class AdminModule {}

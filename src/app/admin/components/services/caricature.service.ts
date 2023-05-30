@@ -1,36 +1,36 @@
-// import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs';
-// import { HttpClient } from '@angular/common/http';
-// import { Caricature } from './../models/caricature.model';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Caricature } from 'src/app/features/Interfaces/caricature';
+import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class CaricatureService {
+@Injectable({
+    providedIn: 'root'
+})
+export class CaricatureService {
 
-//   private caricaturesUrl = 'api/caricatures';
+    private apiUrl = 'http://localhost:5000/admin/caricature';
 
-//   constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private AuthenticationService: AuthenticationService) { }
 
-//   getCaricatures(): Observable<Caricature[]> {
-//     return this.http.get<Caricature[]>(this.caricaturesUrl);
-//   }
+    headers = { "access-token": `${this.AuthenticationService.getToken()}` };
+    requestOptions = { headers: this.headers };
 
-//   getCaricature(id: number): Observable<Caricature> {
-//     const url = `${this.caricaturesUrl}/${id}`;
-//     return this.http.get<Caricature>(url);
-//   }
 
-//   addCaricature(caricature: Caricature): Observable<Caricature> {
-//     return this.http.post<Caricature>(this.caricaturesUrl, caricature);
-//   }
+    getCaricatures(): Observable<Caricature[]> {
+        return this.http.get<Caricature[]>(this.apiUrl, this.requestOptions);
+    }
 
-//   updateCaricature(caricature: Caricature): Observable<any> {
-//     return this.http.put(this.caricaturesUrl, caricature);
-//   }
+    addCaricature(caricature: Caricature): Observable<Caricature> {
+        return this.http.post<Caricature>(this.apiUrl, caricature, this.requestOptions);
+    }
 
-//   deleteCaricature(id: number): Observable<Caricature> {
-//     const url = `${this.caricaturesUrl}/${id}`;
-//     return this.http.delete<Caricature>(url);
-//   }
-// }
+    updateCaricature(caricature: Caricature, id: string): Observable<any> {
+        return this.http.put(this.apiUrl, caricature, this.requestOptions);
+    }
+
+    deleteCaricature(id: number): Observable<Caricature> {
+        const url = `${this.apiUrl}/${id}`;
+        return this.http.delete<Caricature>(url, this.requestOptions);
+    }
+}
