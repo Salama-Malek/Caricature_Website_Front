@@ -4,50 +4,46 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/features/Interfaces/user';
 import { Router } from '@angular/router';
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   private baseUrl = 'http://localhost:5000';
+  private token?: any;
 
-  constructor(private http: HttpClient, private _Router: Router) { }
+  constructor(private http: HttpClient, private _Router: Router) {
+    if (localStorage.getItem("token") != null) this.detachToken();
+  }
 
   currentLogUser = new BehaviorSubject<User>({
     _id: "",
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     image: "",
     is_admin: false
   });
 
-  
-  login(email: string, password: string): Observable<boolean> {
-    return this.http
-      .post<{ token: string }>(`${this.baseUrl}/login`, { email, password })
-      .pipe(
-        map((response) => {
-          const token = response.token;
-          if (token) {
-            localStorage.setItem(
-              'currentUser',
-              JSON.stringify({ email, token })
-            );
-            return true;
-          } else {
-            return false;
-          }
-        })
-      );
+
+  login(userInfo: FormData): Observable<boolean> {
+    return this.http.post<any>(`${this.baseUrl}/login`, userInfo);
   }
 
-  
+  detachToken() {
+    this.token = localStorage.getItem("token");
+    this.currentLogUser.next(jwtDecode(this.token));
+  }
+
+
   logout(): void {
     localStorage.removeItem('currentUser');
     this.currentLogUser.next({
       _id: "",
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
       image: "",
@@ -57,7 +53,7 @@ export class AuthenticationService {
     this._Router.navigate(["/login"]);
   }
 
-  
+
   isLoggedIn(): boolean {
     const currentUserString = localStorage.getItem('currentUser');
     const currentUser = currentUserString
@@ -66,9 +62,11 @@ export class AuthenticationService {
 
     return !!currentUser;
   }
-  
-  
-  register(formData: any) {
+
+
+  register(formData: any): Observable<any> {
+    console.log(formData);
+
     return this.http.post<any>(`${this.baseUrl}/register`, formData, {
       reportProgress: true,
       observe: 'events',
