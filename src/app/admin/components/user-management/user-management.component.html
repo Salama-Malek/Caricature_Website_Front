@@ -9,45 +9,16 @@
               <th>Name</th>
               <th>Email</th>
               <th>Password</th>
-
               <th></th>
               <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr class="">
-              <td>034</td>
-              <td>Iphone 7</td>
-              <td>12 May 2017</td>
-              <td><a href="#" class="btn btn-primary btn-sm w-50">Edit</a></td>
-              <td><a href="#" class="btn btn-danger btn-sm w-50">Delete</a></td>
-            </tr>
-            <tr class="">
-              <td>035</td>
-              <td>Galaxy S8</td>
-              <td>15 May 2017</td>
-              <td><a href="#" class="btn btn-primary btn-sm w-50">Edit</a></td>
-              <td><a href="#" class="btn btn-danger btn-sm w-50">Delete</a></td>
-            </tr>
-            <tr class="">
-              <td>036</td>
-              <td>Amazon Echo</td>
-              <td>17 May 2017</td>
-              <td><a href="#" class="btn btn-primary btn-sm w-50">Edit</a></td>
-              <td><a href="#" class="btn btn-danger btn-sm w-50">Delete</a></td>
-            </tr>
-            <tr class="">
-              <td>037</td>
-              <td>Google Pixel</td>
-              <td>17 May 2017</td>
-              <td><a href="#" class="btn btn-primary btn-sm w-50">Edit</a></td>
-              <td><a href="#" class="btn btn-danger btn-sm w-50">Delete</a></td>
-            </tr>
-            <tr class="">
-              <td>038</td>
-              <td>Mac Mini</td>
-              <td>19 May 2017</td>
+            <tr *ngFor="let user of users" class="">
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.password }}</td>
               <td><a href="#" class="btn btn-primary btn-sm w-50">Edit</a></td>
               <td><a href="#" class="btn btn-danger btn-sm w-50">Delete</a></td>
             </tr>

@@ -48,7 +48,8 @@ export class LoginComponent {
         this._Authentication.detachToken();
 
         this.user = this._Authentication.currentLogUser.value;
-
+        console.log(this.user);
+        
         if (this.user.is_admin == true) {
           this.router.navigate(["/admin/home"]);
         } else {

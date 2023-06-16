@@ -17,21 +17,14 @@ export class HeaderComponent {
     this._Authentication.currentLogUser.subscribe((response) => {
       if (this._Authentication.currentLogUser.getValue().email === "") {
         this.isLogged = false;
-        // this.user = this._Authentication.currentLogUser.value;
-      } else if (
-        this._Authentication.currentLogUser.getValue().email !== "" &&
-        this._Authentication.currentLogUser.getValue().is_admin === false
-      ) {
-        this.isLogged = true;
         this.isAdmin = false;
-        this.user = this._Authentication.currentLogUser.value;
+        this.user = undefined;
       } else {
         this.isLogged = true;
-        this.isAdmin = true;
+        this.isAdmin = this._Authentication.currentLogUser.getValue().is_admin;
         this.user = this._Authentication.currentLogUser.value;
       }
     });
-
   }
 
   toggleNavbar() {
@@ -41,5 +34,4 @@ export class HeaderComponent {
   logout() {
     this._Authentication.logout();
   }
-
 }
