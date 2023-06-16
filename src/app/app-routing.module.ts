@@ -12,13 +12,6 @@ import { AuthorListComponent } from './features/components/author-list/author-li
 import { AuthorDetailsComponent } from './features/components/author-details/author-details.component';
 import { CharacterComponent } from './features/components/character/character.component';
 import { ContactUsComponent } from './shared/components/contact-us/contact-us.component';
-import { UserManagementComponent } from './admin/components/user-management/user-management.component';
-import { ArtistManagementComponent } from './admin/components/artist-management/artist-management.component';
-import { AuthorManagementComponent } from './admin/components/author-management/author-management.component';
-import { CharacterManagementComponent } from './admin/components/character-management/character-management.component';
-import { CommentManagementComponent } from './admin/components/comment-management/comment-management.component';
-import { CaricatureManagementComponent } from './admin/components/caricature-management/caricature-management.component';
-import { AdminDashboardComponent } from './admin/components/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -41,10 +34,7 @@ const routes: Routes = [
     path: 'artist/:id',
     component: ArtistDetailsComponent
   },
-  {
-    path:'admin/home',
-    component: AdminDashboardComponent
-  }
+  
 
 ];
 

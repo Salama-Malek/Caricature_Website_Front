@@ -12,6 +12,8 @@ import { CommentManagementComponent } from './components/comment-management/comm
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AdminDashboardComponent,
@@ -21,9 +23,18 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
     CharacterManagementComponent,
     CommentManagementComponent,
     AdminHomeComponent,
-
+    CaricatureManagementComponent,
   ],
-  imports: [CommonModule, FormsModule, AdminRoutingModule, AppRoutingModule ,HttpClientModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AdminRoutingModule,
+    AppRoutingModule,
+    HttpClientModule,
+    CommonModule,
+    FormsModule,
+    ToastrModule.forRoot(),
+  ],
   exports: [
     AdminDashboardComponent,
     UserManagementComponent,

@@ -9,6 +9,7 @@ import { User } from 'src/app/features/Interfaces/user';
 })
 export class UserManagementComponent implements OnInit {
   users: User[] = [];
+  editedUser: User | undefined;
 
   constructor(private userService: UserService) { }
 
@@ -27,24 +28,34 @@ export class UserManagementComponent implements OnInit {
     );
   }
 
-  updateUser(userId: any): void {
-    this.userService.updateUser(userId).subscribe(
-      (response: any) => {
-        // Handle the response if needed
-        console.log(response);
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
+  startEditing(user: User): void {
+    this.editedUser = { ...user }; // Create a copy of the user to avoid modifying the original
   }
 
-  deleteUser(userId: any): void {
-    this.userService.deleteUser(userId).subscribe(
+  cancelEditing(): void {
+    this.editedUser = undefined;
+  }
+
+  saveUserChanges(): void {
+    if (this.editedUser) {
+      this.userService.updateUser(this.editedUser).subscribe(
+        (response: any) => {
+          console.log(response);
+          this.editedUser = undefined;
+          this.loadUsers();
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  deleteUser(user: User): void {
+    this.userService.deleteUser(user._id).subscribe(
       (response: any) => {
-        // Handle the response if needed
         console.log(response);
-        this.loadUsers(); // Refresh the user list after deletion
+        this.loadUsers();
       },
       (error: any) => {
         console.log(error);

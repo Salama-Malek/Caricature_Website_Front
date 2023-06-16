@@ -29,7 +29,7 @@ export class CaricatureService {
         return this.http.put(this.apiUrl, caricature, this.requestOptions);
     }
 
-    deleteCaricature(id: number): Observable<Caricature> {
+    deleteCaricature(id: string): Observable<Caricature> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.delete<Caricature>(url, this.requestOptions);
     }

@@ -51,7 +51,7 @@ export class LoginComponent {
         console.log(this.user);
         
         if (this.user.is_admin == true) {
-          this.router.navigate(["/admin/home"]);
+          this.router.navigate(["/admin-dashboard"]);
         } else {
           this.router.navigate(["/"]);
         }

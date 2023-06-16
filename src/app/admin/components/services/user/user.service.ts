@@ -11,22 +11,25 @@ export class UserService {
 
   private apiUrl = 'http://localhost:5000/admin/user/';
 
-  constructor(private _HttpClient: HttpClient, private _AuthenticationService: AuthenticationService) { }
+  constructor(
+    private http: HttpClient,
+    private authenticationService: AuthenticationService
+  ) { }
 
-  headers = { "access-token": `${this._AuthenticationService.getToken()}` };
+  headers = { "access-token": `${this.authenticationService.getToken()}` };
   requestOptions = { headers: this.headers };
 
-
   getAllUsers(): Observable<User[]> {
-    return this._HttpClient.get<User[]>(this.apiUrl, this.requestOptions)
+    return this.http.get<User[]>(this.apiUrl, this.requestOptions);
   }
 
-  updateUser(user_id: any): Observable<any> {
-    return this._HttpClient.post(`${this.apiUrl}${user_id}`, this.requestOptions);
+  updateUser(user: User): Observable<any> {
+    const url = `${this.apiUrl}${user._id}`;
+    return this.http.put(url, user, this.requestOptions);
   }
 
-  deleteUser(user_id: any): Observable<any> {
-    return this._HttpClient.delete(`${this.apiUrl}${user_id}`, this.requestOptions);
+  deleteUser(user_id: string): Observable<any> {
+    const url = `${this.apiUrl}${user_id}`;
+    return this.http.delete(url, this.requestOptions);
   }
-
 }

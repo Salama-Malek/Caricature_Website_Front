@@ -12,7 +12,6 @@
               <th>BirthDate</th>
               <th>Bio</th>
               <th>Favourite</th>
-
               <th></th>
               <th></th>
               <th></th>
@@ -20,20 +19,18 @@
           </thead>
           <tbody>
             <tr class="" *ngFor="let artist of artists">
-              <td>{{artist._id}}</td>
-              <td>{{artist.name}}</td>
-              <td><img style="width: 100px;height:100px" src="{{artist.image}}"></td>
-              <td>{{artist.birthDate |date}}</td>
-              <td>{{artist.bio}}</td>
-              <!-- <td>{{artist.favourite? "Yes" :"No"}}</td> -->
-              <td><a href="#" class="btn btn-primary btn-sm w-50%">Edit</a></td>
-              <td><a (click)="DeleteArtists(artist._id)" class="btn btn-danger btn-sm w-50%"> Delete</a></td>
+              <td>{{ artist._id }}</td>
+              <td>{{ artist.name }}</td>
+              <td><img style="width: 100px;height:100px" [src]="artist.image"></td>
+              <td>{{ artist.birthDate | date: 'yyyy-MM-dd' }}</td>
+              <td>{{ artist.bio }}</td>
+              <td>{{ artist.favourite ? 'Yes' : 'No' }}</td>
+              <td><a class="btn btn-primary btn-sm w-50%" (click)="editArtist(artist)">Edit</a></td>
+              <td><a class="btn btn-danger btn-sm w-50%" (click)="deleteArtist(artist)">Delete</a></td>
             </tr>
-
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </div>
-  
