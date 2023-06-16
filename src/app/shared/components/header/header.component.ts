@@ -15,8 +15,6 @@ export class HeaderComponent {
 
   constructor(private _Authentication: AuthenticationService) {
     this._Authentication.currentLogUser.subscribe((response) => {
-      console.log(response);
-
       if (this._Authentication.currentLogUser.getValue().email === "") {
         this.isLogged = false;
         // this.user = this._Authentication.currentLogUser.value;

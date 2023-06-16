@@ -8,16 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class AuthorListService {
 
-  private apiUrl = 'http://localhost:5000/author'; // Replace with your API URL
+  private apiUrl = 'http://localhost:5000'; // Replace with your API URL
 
   constructor(private http: HttpClient) { }
 
   getAuthors(): Observable<Author[]> {
-    return this.http.get<Author[]>(this.apiUrl);
+    return this.http.get<Author[]>(`${ this.apiUrl }/authors`);
   }
 
   getAuthorById(id: string): Observable<Author> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}/author/${id}`;
     return this.http.get<Author>(url);
   }
 }

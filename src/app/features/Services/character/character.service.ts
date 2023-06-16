@@ -13,7 +13,7 @@ export class CharacterService {
   constructor(private http: HttpClient) { }
 
   getCharacters(): Observable<Character[]> {
-    const url = `${this.apiUrl}/character`;
+    const url = `${this.apiUrl}/characters`;
     return this.http.get<Character[]>(url);
   }
 

@@ -8,16 +8,16 @@ import { Artist } from '../../../features/Interfaces/artists';
 })
 export class ArtistListService {
 
-  private apiUrl = 'http://localhost:5000/artist'; 
+  private apiUrl = 'http://localhost:5000'; 
 
   constructor(private http: HttpClient) { }
 
   getArtists(): Observable<Artist[]> {
-    return this.http.get<Artist[]>(this.apiUrl);
+    return this.http.get<Artist[]>(`${this.apiUrl}/artists`);
   }
 
   getArtist(id: string): Observable<Artist> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}/artist/${id}`;
     return this.http.get<Artist>(url);
   }
 

@@ -8,16 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class CaricatureGalleryService {
 
-  private apiUrl = 'http://localhost:5000/caricature'; // Replace with your API URL
+  private apiUrl = 'http://localhost:5000'; // Replace with your API URL
 
   constructor(private http: HttpClient) { }
 
   getCaricatures(): Observable<Caricature[]> {
-    return this.http.get<Caricature[]>(this.apiUrl);
+    return this.http.get<Caricature[]>(`${this.apiUrl}/caricatures`);
   }
 
   getCaricatureById(id: string): Observable<Caricature> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${ this.apiUrl }/caricature/${id}`;
     return this.http.get<Caricature>(url);
   }
 }

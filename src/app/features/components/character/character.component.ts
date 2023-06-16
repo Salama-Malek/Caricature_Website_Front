@@ -18,6 +18,10 @@ export class CharacterComponent implements OnInit {
 
   getCharacters(): void {
     this.characterService.getCharacters()
-      .subscribe(characters => this.characters = characters);
+      .subscribe(characters => {
+        console.log(characters);
+        
+        this.characters = characters
+      });
   }
 }

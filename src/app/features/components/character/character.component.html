@@ -176,13 +176,13 @@
           <h4 class="title">{{ character.name }}</h4>
           <img
             style="width: 300px; height: 300px"
-            [src]="'http://localhost:5000/assets/upload/' + character.image"
-            [alt]="character.name"
+            src="{{character.image}}"
+            alt="{{character.name}}"
           />
           <p class="description">
             Author: {{ character.author._id }}
             <br />
-            Artist: {{ character.artist }}
+            Artist: {{ character.artist._id }}
           </p>
         </div>
       </div>
