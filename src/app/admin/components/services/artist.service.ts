@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/core/authentication/authenticatio
   providedIn: 'root'
 })
 export class ArtistService {
-  private apiUrl = 'http://localhost:5000/artist';
+  private apiUrl = 'http://localhost:5000/admin/artist';
 
   constructor(private _HttpClient: HttpClient, private _AuthenticationService: AuthenticationService) { }
 
@@ -19,6 +19,12 @@ export class ArtistService {
   getArtists(): Observable<Artist[]> {
     const requestOptions = { headers: this.getHeaders() };
     return this._HttpClient.get<Artist[]>(this.apiUrl, requestOptions);
+  }
+
+  getArtistById(id: string): Observable<Artist> {
+    const url = `${this.apiUrl}/${id}`;
+    const requestOptions = { headers: this.getHeaders() };
+    return this._HttpClient.get<Artist>(url, requestOptions);
   }
 
   createArtist(artist: Artist): Observable<Artist> {

@@ -14,20 +14,66 @@
               <th>Favourite</th>
               <th></th>
               <th></th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr class="" *ngFor="let artist of artists">
-              <td>{{ artist._id }}</td>
-              <td>{{ artist.name }}</td>
-              <td><img style="width: 100px;height:100px" [src]="artist.image"></td>
-              <td>{{ artist.birthDate | date: 'yyyy-MM-dd' }}</td>
-              <td>{{ artist.bio }}</td>
-              <td>{{ artist.favourite ? 'Yes' : 'No' }}</td>
-              <td><a class="btn btn-primary btn-sm w-50%" (click)="editArtist(artist)">Edit</a></td>
-              <td><a class="btn btn-danger btn-sm w-50%" (click)="deleteArtist(artist)">Delete</a></td>
-            </tr>
+            <ng-container *ngFor="let artist of artists">
+              <tr class="" [ngClass]="{ 'editing': artist._id === editedArtist?._id }">
+                <td>{{ artist._id }}</td>
+                <td>
+                  <ng-container *ngIf="artist._id !== editedArtist?._id; else editName">
+                    {{ artist.name }}
+                  </ng-container>
+                  <ng-template #editName>
+                    <input [(ngModel)]="editedArtist.name" class="form-control">
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="artist._id !== editedArtist?._id; else editImage">
+                    <img style="width: 100px;height:100px" [src]="artist.image">
+                  </ng-container>
+                  <ng-template #editImage>
+                    <input [(ngModel)]="editedArtist.image" class="form-control">
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="artist._id !== editedArtist?._id; else editBirthDate">
+                    {{ artist.birthDate | date: 'yyyy-MM-dd' }}
+                  </ng-container>
+                  <ng-template #editBirthDate>
+                    <input [(ngModel)]="editedArtist.birthDate" class="form-control">
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="artist._id !== editedArtist?._id; else editBio">
+                    {{ artist.bio }}
+                  </ng-container>
+                  <ng-template #editBio>
+                    <textarea [(ngModel)]="editedArtist.bio" class="form-control"></textarea>
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="artist._id !== editedArtist?._id; else editFavourite">
+                    {{ artist.favourite ? 'Yes' : 'No' }}
+                  </ng-container>
+                  <ng-template #editFavourite>
+                    <input [(ngModel)]="editedArtist.favourite" type="checkbox">
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="artist._id !== editedArtist?._id">
+                    <button class="btn btn-primary btn-sm w-50%" (click)="startEditing(artist)">Edit</button>
+                  </ng-container>
+                  <ng-container *ngIf="artist._id === editedArtist?._id">
+                    <button class="btn btn-success btn-sm w-50%" (click)="saveArtistChanges()">Save</button>
+                    <button class="btn btn-secondary btn-sm w-50%" (click)="cancelEditing()">Cancel</button>
+                  </ng-container>
+                </td>
+                <td>
+                  <button class="btn btn-danger btn-sm w-50%" (click)="deleteArtist(artist)">Delete</button>
+                </td>
+              </tr>
+            </ng-container>
           </tbody>
         </table>
       </div>

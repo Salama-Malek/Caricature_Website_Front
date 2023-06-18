@@ -9,23 +9,40 @@ import { Author } from 'src/app/features/Interfaces/author';
 })
 export class AuthorService {
 
-  private apiUrl = 'http://localhost:5000/admin/author/';
+  private apiUrl = 'http://localhost:5000/admin/Author';
 
   constructor(private _HttpClient: HttpClient, private _AuthenticationService: AuthenticationService) { }
 
-  headers = { "access-token": `${this._AuthenticationService.getToken()}` };
-  requestOptions = { headers: this.headers };
-
-  getAllUsers(): Observable<Author[]> {
-    return this._HttpClient.get<Author[]>(this.apiUrl, this.requestOptions)
+  getHeaders(): { [header: string]: string } {
+    return { "access-token": `${this._AuthenticationService.getToken()}` };
   }
 
-  updateAuthor(Author_id: any): Observable<any> {
-    return this._HttpClient.post(`${this.apiUrl}${Author_id}`, this.requestOptions);
+  getAuthors(): Observable<Author[]> {
+    const requestOptions = { headers: this.getHeaders() };
+    return this._HttpClient.get<Author[]>(this.apiUrl, requestOptions);
   }
 
-  deleteAuthor(Author_id: any): Observable<any> {
-    return this._HttpClient.delete(`${this.apiUrl}${Author_id}`, this.requestOptions);
+  getAuthorById(id: string): Observable<Author> {
+    const url = `${this.apiUrl}/${id}`;
+    const requestOptions = { headers: this.getHeaders() };
+    return this._HttpClient.get<Author>(url, requestOptions);
+  }
+
+  createAuthor(Author: Author): Observable<Author> {
+    const requestOptions = { headers: this.getHeaders() };
+    return this._HttpClient.post<Author>(this.apiUrl, Author, requestOptions);
+  }
+
+  updateAuthor(id: string, Author: Author): Observable<Author> {
+    const url = `${this.apiUrl}/${id}`;
+    const requestOptions = { headers: this.getHeaders() };
+    return this._HttpClient.put<Author>(url, Author, requestOptions);
+  }
+
+  deleteAuthor(id: string): Observable<void> {
+    const url = `${this.apiUrl}/${id}`;
+    const requestOptions = { headers: this.getHeaders() };
+    return this._HttpClient.delete<void>(url, requestOptions);
   }
 
 }

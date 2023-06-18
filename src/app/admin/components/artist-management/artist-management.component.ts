@@ -11,54 +11,77 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ArtistManagementComponent implements OnInit {
   artists: Artist[] = [];
-  newArtist: Artist = {
+
+  editedArtist: Artist = {
     _id: '',
     name: '',
     image: '',
-    birthDate: new Date(),
+    birthDate: new Date,
     bio: '',
     favourite: false
   };
-  isAddingArtist = false;
 
-  constructor(private router: Router, private artistService: ArtistService) { }
+  constructor(private artistService: ArtistService) { }
 
   ngOnInit(): void {
-    this.getArtists();
+    this.loadArtists();
   }
 
-  getArtists(): void {
+  loadArtists(): void {
     this.artistService.getArtists().subscribe(
       (artists: Artist[]) => {
         this.artists = artists;
       },
-      (error: any) => {
-        console.error('Failed to retrieve artists:', error);
+      (error: HttpErrorResponse) => {
+        console.log(error);
       }
     );
   }
 
-  saveArtist(artist: Artist): void {
-    if (artist._id) {
-      this.artistService.updateArtist(artist._id, artist).subscribe(
-        (updatedArtist: Artist) => {
-          console.log('Artist updated:', updatedArtist);
-          this.getArtists(); // Refresh the artist list after update
-          this.resetNewArtist();
+  loadArtistById(id: string): void {
+    this.artistService.getArtistById(id).subscribe(
+      (artist: Artist) => {
+        console.log(artist);
+        // Handle the fetched artist data as needed
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
+  }
+
+  startEditing(artist: Artist): void {
+    this.editedArtist = { ...artist }; // Create a copy of the artist to avoid modifying the original
+  }
+
+  cancelEditing(): void {
+    this.editedArtist = {
+      _id: '',
+      name: '',
+      image: '',
+      birthDate: new Date,
+      bio: '',
+      favourite: false
+    };
+  }
+
+  saveArtistChanges(): void {
+    if (this.editedArtist) {
+      this.artistService.updateArtist(this.editedArtist._id, this.editedArtist).subscribe(
+        (response: Artist) => {
+          console.log(response);
+          this.editedArtist = {
+            _id: '',
+            name: '',
+            image: '',
+            birthDate: new Date,
+            bio: '',
+            favourite: false
+          };
+          this.loadArtists();
         },
-        (error: any) => {
-          console.error('Failed to update artist:', error);
-        }
-      );
-    } else {
-      this.artistService.createArtist(artist).subscribe(
-        (createdArtist: Artist) => {
-          console.log('Artist created:', createdArtist);
-          this.getArtists(); // Refresh the artist list after create
-          this.resetNewArtist();
-        },
-        (error: any) => {
-          console.error('Failed to create artist:', error);
+        (error: HttpErrorResponse) => {
+          console.log(error);
         }
       );
     }
@@ -67,40 +90,12 @@ export class ArtistManagementComponent implements OnInit {
   deleteArtist(artist: Artist): void {
     this.artistService.deleteArtist(artist._id).subscribe(
       () => {
-        console.log('Artist deleted:', artist);
-        // Remove the deleted artist from the local array
-        this.artists = this.artists.filter(a => a._id !== artist._id);
-        // Optionally, you can display a success message or perform any other action after deleting the artist
+        console.log(`Artist with ID ${artist._id} deleted.`);
+        this.loadArtists();
       },
       (error: HttpErrorResponse) => {
-        console.error('Failed to delete artist:', error);
-        if (error.status === 404) {
-          console.error('Artist not found.');
-          // Optionally, you can display an error message or perform any other action if the artist is not found
-        } else {
-          console.error('An unexpected error occurred.');
-          // Optionally, you can display a generic error message or perform any other action for other error cases
-        }
+        console.log(error);
       }
     );
-  }
-  
-  
-
-  editArtist(artist: Artist): void {
-    this.newArtist = { ...artist }; // Assign the selected artist to the newArtist for editing
-    this.isAddingArtist = true; // Show the add artist modal
-  }
-
-  resetNewArtist(): void {
-    this.newArtist = {
-      _id: '',
-      name: '',
-      image: '',
-      birthDate: new Date(),
-      bio: '',
-      favourite: false
-    };
-    this.isAddingArtist = false; // Hide the add artist modal
   }
 }

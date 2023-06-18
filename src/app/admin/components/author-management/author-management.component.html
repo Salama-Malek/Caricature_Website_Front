@@ -1,7 +1,7 @@
 <div class="card-deck">
   <div class="card col-lg-12 px-0 mb-4">
     <div class="card-body">
-      <h5 class="card-title">Auther</h5>
+      <h5 class="card-title">author</h5>
       <div class="table-responsive">
         <table class="table center-aligned-table">
           <thead>
@@ -11,24 +11,69 @@
               <th>Image</th>
               <th>BirthDate</th>
               <th>Bio</th>
-              <th></th>
+              <th>Favourite</th>
               <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-
-            <tr class="" *ngFor="let auther of authers">
-              <td>{{auther._id}}</td>
-              <td>{{auther.name}}</td>
-              <td><img style="width: 100px;height:100px" src="http://localhost:5000/assets/upload/{{auther.image}}"></td>
-              <td>{{auther.birthDate | date}}</td>
-              <td>{{auther.bio}}</td>
-
-              <td><a  class="btn btn-primary btn-sm w-50%">Edit</a></td>
-              <td><a  class="btn btn-danger btn-sm w-50%">Delete</a></td>
-            </tr>
-
+            <ng-container *ngFor="let author of authors">
+              <tr class="" [ngClass]="{ 'editing': author._id === editedAuthor?._id }">
+                <td>{{ author._id }}</td>
+                <td>
+                  <ng-container *ngIf="author._id !== editedAuthor?._id; else editName">
+                    {{ author.name }}
+                  </ng-container>
+                  <ng-template #editName>
+                    <input [(ngModel)]="editedAuthor.name" class="form-control">
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="author._id !== editedAuthor?._id; else editImage">
+                    <img style="width: 100px;height:100px" [src]="author.image">
+                  </ng-container>
+                  <ng-template #editImage>
+                    <input [(ngModel)]="editedAuthor.image" class="form-control">
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="author._id !== editedAuthor?._id; else editBirthDate">
+                    {{ author.birthDate | date: 'yyyy-MM-dd' }}
+                  </ng-container>
+                  <ng-template #editBirthDate>
+                    <input [(ngModel)]="editedAuthor.birthDate" class="form-control">
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="author._id !== editedAuthor?._id; else editBio">
+                    {{ author.bio }}
+                  </ng-container>
+                  <ng-template #editBio>
+                    <textarea [(ngModel)]="editedAuthor.bio" class="form-control"></textarea>
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="author._id !== editedAuthor?._id; else editFavourite">
+                    {{ author.favourite ? 'Yes' : 'No' }}
+                  </ng-container>
+                  <ng-template #editFavourite>
+                    <input [(ngModel)]="editedAuthor.favourite" type="checkbox">
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="author._id !== editedAuthor?._id">
+                    <button class="btn btn-primary btn-sm w-50%" (click)="startEditing(author)">Edit</button>
+                  </ng-container>
+                  <ng-container *ngIf="author._id === editedAuthor?._id">
+                    <button class="btn btn-success btn-sm w-50%" (click)="saveAuthorChanges()">Save</button>
+                    <button class="btn btn-secondary btn-sm w-50%" (click)="cancelEditing()">Cancel</button>
+                  </ng-container>
+                </td>
+                <td>
+                  <button class="btn btn-danger btn-sm w-50%" (click)="deleteAuthor(author)">Delete</button>
+                </td>
+              </tr>
+            </ng-container>
           </tbody>
         </table>
       </div>
