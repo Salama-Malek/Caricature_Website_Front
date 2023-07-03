@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -20,7 +22,6 @@ import { CommonModule } from '@angular/common';
     AdminModule,
     CommonModule,
     FormsModule,
-    RouterLink,
     RouterModule,
   ],
   providers: [],
