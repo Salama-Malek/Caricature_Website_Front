@@ -8,7 +8,6 @@ import { ArtistManagementComponent } from './components/artist-management/artist
 import { AuthorManagementComponent } from './components/author-management/author-management.component';
 import { CharacterManagementComponent } from './components/character-management/character-management.component';
 import { CaricatureManagementComponent } from './components/caricature-management/caricature-management.component';
-import { CommentManagementComponent } from './components/comment-management/comment-management.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -19,7 +18,6 @@ import { ToastrModule } from 'ngx-toastr';
     ArtistManagementComponent,
     AuthorManagementComponent,
     CharacterManagementComponent,
-    CommentManagementComponent,
     AdminHomeComponent,
     CaricatureManagementComponent,
   ],
@@ -36,7 +34,6 @@ import { ToastrModule } from 'ngx-toastr';
     ArtistManagementComponent,
     AuthorManagementComponent,
     CharacterManagementComponent,
-    CommentManagementComponent,
   ],
   bootstrap: [AdminDashboardComponent],
 })

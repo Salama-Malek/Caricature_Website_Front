@@ -5,6 +5,8 @@ import { CharacterService } from '../services/character.service';
 import { Artist } from 'src/app/features/Interfaces/artists';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { AuthorService } from '../services/author/author.service';
+import { ArtistService } from '../services/artist.service'; 
 @Component({
   selector: 'app-character-management',
   templateUrl: './character-management.component.html',
@@ -16,8 +18,8 @@ export class CharacterManagementComponent implements OnInit {
   displaySuccessModal: boolean = false;
   displayAddCharacterModal: boolean = false;
 
-  authors!: Author[];
-  artists!: Artist[];
+  authors: Author[] = [];
+  artists: Artist[] = [];
 
   editedCharacter: Character = {
     _id: '',
@@ -35,50 +37,51 @@ export class CharacterManagementComponent implements OnInit {
     artist: {} as Artist,
   };
 
+  constructor(
+    private characterService: CharacterService,
+    private http: HttpClient, private ArtistService : ArtistService, private _AuthorService : AuthorService,
+  ) {}
 
-  constructor(private characterService: CharacterService,private http: HttpClient) {}
-  
   ngOnInit(): void {
     this.loadCharacters();
     this.fetchAuthors();
     this.fetchArtists();
   }
 
-  fetchAuthors() {
-    this.http.get<any>('http://localhost:5000/authors').subscribe(
-      (response) => {
-        this.authors = response; // Assign the retrieved data to the authors array
+  fetchAuthors(): void {
+    this._AuthorService.getAuthors().subscribe(
+      (authors: Author[]) => {
+        this.authors = authors;
+        console.log(authors);
+        
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         console.log('Error fetching authors:', error);
       }
     );
   }
 
-  fetchArtists() {
-    this.http.get<any>('http://localhost:5000/artists').subscribe(
-      (response) => {
-        this.artists = response; // Assign the retrieved data to the artists array
+  fetchArtists(): void {
+    this.ArtistService.getArtists().subscribe(
+      (artists: Artist[]) => {
+        this.artists = artists;
+        console.log(artists);
+        
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         console.log('Error fetching artists:', error);
       }
     );
   }
 
-
-
-
-  onImageSelected(event: any) {
+  onImageSelected(event: any): void {
     if (event.target.files && event.target.files.length) {
       const file = event.target.files[0];
-      // Perform any necessary processing with the selected image file
-      // For example, you can use FileReader to read the file and update the editedCharacter's image property
       const reader = new FileReader();
       reader.onload = () => {
         const imageDataUrl = reader.result as string;
         this.editedCharacter.image = imageDataUrl;
-        this.newCharacter.image = imageDataUrl; // Update newCharacter's image property
+        this.newCharacter.image = imageDataUrl;
       };
       reader.readAsDataURL(file);
     }
@@ -86,8 +89,8 @@ export class CharacterManagementComponent implements OnInit {
 
   loadCharacters(): void {
     this.characterService.getCharacters().subscribe(
-      (Characters: Character[]) => {
-        this.characters = Characters;
+      (characters: Character[]) => {
+        this.characters = characters;
       },
       (error: HttpErrorResponse) => {
         console.log(error);
@@ -95,8 +98,8 @@ export class CharacterManagementComponent implements OnInit {
     );
   }
 
-  startEditing(Character: Character): void {
-    this.editedCharacter = { ...Character };
+  startEditing(character: Character): void {
+    this.editedCharacter = { ...character };
     this.displayEditModal = true;
   }
 
@@ -112,29 +115,26 @@ export class CharacterManagementComponent implements OnInit {
   }
 
   saveCharacterChanges(): void {
-  
-    console.log(this.editedCharacter);
-  
     if (this.editedCharacter._id) {
-      this.characterService.updateCharacter(this.editedCharacter._id, this.editedCharacter).subscribe(
-        (response: Character) => {
-          console.log(response);
-          this.loadCharacters();
-        },
-        (error: HttpErrorResponse) => {
-          console.log(error);
-        }
-      );
+      this.characterService
+        .updateCharacter(this.editedCharacter._id, this.editedCharacter)
+        .subscribe(
+          (response: Character) => {
+            console.log(response);
+            this.loadCharacters();
+          },
+          (error: HttpErrorResponse) => {
+            console.log(error);
+          }
+        );
     }
-  
     this.closeEditModal();
   }
 
-
-  deleteCharacter(CharacterId: string): void {
-    this.characterService.deleteCharacter(CharacterId).subscribe(
+  deleteCharacter(characterId: string): void {
+    this.characterService.deleteCharacter(characterId).subscribe(
       () => {
-        console.log(`Character with ID ${CharacterId} deleted.`);
+        console.log(`Character with ID ${characterId} deleted.`);
         this.loadCharacters();
       },
       (error: HttpErrorResponse) => {
@@ -143,24 +143,14 @@ export class CharacterManagementComponent implements OnInit {
     );
   }
 
-
-  
-  
   addCharacter(addCharacterForm: NgForm): void {
     console.log('Add button clicked');
-  
     if (addCharacterForm.valid) {
       const formData = new FormData();
-      formData.append('name', this.newCharacter.name);
+      formData.append('name', this.newCharacter?.name);
       formData.append('image', this.newCharacter.image);
-  
-      Object.entries(this.newCharacter.author).forEach(([key, value]) => {
-        formData.append(`author.${key}`, value);
-      });
-  
-      Object.entries(this.newCharacter.artist).forEach(([key, value]) => {
-        formData.append(`artist.${key}`, value);
-      });
+      formData.append('author', this.newCharacter.author._id);
+      formData.append('artist', this.newCharacter.artist._id);
   
       this.characterService.createCharacter(formData).subscribe(
         (response: Character) => {
@@ -183,26 +173,20 @@ export class CharacterManagementComponent implements OnInit {
     }
   }
   
-  
-  
-
- 
- 
-  
-  closeSuccessModal() {
+  closeSuccessModal(): void {
     this.displaySuccessModal = false;
   }
 
-  closeEditModal() {
+  closeEditModal(): void {
     this.displayEditModal = false;
     this.cancelEditing();
   }
 
-  openAddCharacterModal() {
+  openAddCharacterModal(): void {
     this.displayAddCharacterModal = true;
   }
 
-  closeAddCharacterModal() {
+  closeAddCharacterModal(): void {
     this.displayAddCharacterModal = false;
   }
 }

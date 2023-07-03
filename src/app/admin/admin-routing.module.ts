@@ -5,7 +5,6 @@ import { ArtistManagementComponent } from './components/artist-management/artist
 import { AuthorManagementComponent } from './components/author-management/author-management.component';
 import { CharacterManagementComponent } from './components/character-management/character-management.component';
 import { CaricatureManagementComponent } from './components/caricature-management/caricature-management.component';
-import { CommentManagementComponent } from './components/comment-management/comment-management.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AuthGuardGuard } from '../shared/guard/auth-guard.guard';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
@@ -44,10 +43,6 @@ const routes: Routes = [
       {
         path: 'admin-dashboard/caricatures',
         component: CaricatureManagementComponent,
-      },
-      {
-        path: 'admin-dashboard/comments',
-        component: CommentManagementComponent,
       },
       { path: '', pathMatch: 'full', redirectTo: '/admin-dashboard' },
     ],

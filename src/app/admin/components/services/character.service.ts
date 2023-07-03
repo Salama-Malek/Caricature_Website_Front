@@ -8,7 +8,7 @@ import { Character } from 'src/app/features/Interfaces/character';
   providedIn: 'root'
 })
 export class CharacterService {
-  private baseUrl = 'http://localhost:5000/admin'; // Update the base URL
+  private baseUrl = 'http://localhost:5000/admin';
 
   constructor(private httpClient: HttpClient, private _AuthenticationService: AuthenticationService) { }
 
