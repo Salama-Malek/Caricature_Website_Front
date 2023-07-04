@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: '',component: AdminDashboardComponent,
 
-    // canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard],
     children: [
       {
         path: 'admin-dashboard',

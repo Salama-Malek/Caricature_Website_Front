@@ -1,5 +1,5 @@
 
-<div id="main" class="container">
+<!-- <div id="main" class="container">
   <div class="row">
     <div class="col-lg-12">
       <h2 class="page-header">{{ artist.name }}'s Details</h2>
@@ -34,4 +34,39 @@
     </div>
     <div class="col-lg-8 col-md-8 col-xs-12"></div>
   </div>
-</div>
+</div> -->
+
+
+
+<section class="services mt-5 py-5 bg-light px-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card h-100">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <img class="img-fluid" src="{{ artist?.image }}" />
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <span class="info-label">Artist Name:</span>
+
+                <h5 class="card-title fs-4">{{artist?.name}}</h5>
+                <div class="artist-details">
+                  <p>
+                    <span class="info-label">Birth Date:</span>
+                    <span class="info-value">{{ artist?.birthDate | date }}</span>
+                  </p>
+                  <p>
+                    <span class="info-label">Favourite:</span>
+                    <span class="info-value">{{ artist?.favourite ? "Yes" : "No" }}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

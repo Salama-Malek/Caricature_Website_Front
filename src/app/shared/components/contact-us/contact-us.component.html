@@ -33,22 +33,24 @@
         </div>
         <div class="right-side">
           <div class="topic-text">اترك لنا رسالتك </div>
-          <form (submit)="sendMessage()" action="#">
+          <form (submit)="createContact()" #contactForm="ngForm" action="#">
             <div class="input-box">
-              <input type="text" placeholder="أدخل اسمك" [(ngModel)]="contact.name" name="name">
+              <input type="text" placeholder="أدخل اسمك" [(ngModel)]="contact.name" name="name" required>
             </div>
             <div class="input-box">
-              <input type="text" placeholder="أدخل الايميل" [(ngModel)]="contact.email" name="email">
+              <input type="text" placeholder="أدخل الايميل" [(ngModel)]="contact.email" name="email" required>
             </div>
-
+          
             <div class="input-box message-box">
-              <input type="text" placeholder="أدخل رسالتك" [(ngModel)]="contact.message" name="message">
+              <input type="text" placeholder="أدخل رسالتك" [(ngModel)]="contact.message" name="message" required>
             </div>
-
+          
             <div class="button">
               <input type="submit" value="إرسال الان">
             </div>
           </form>
+          
+          
         </div>
       </div>
     </div>

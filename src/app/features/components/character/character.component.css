@@ -355,3 +355,51 @@
     color: var(--light);
   }
   
+
+  .team-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+  }
+  
+  .team-item {
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .team-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-item img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .bg-light {
+    background-color: #f8f9fa;
+  }
+  
+  .animated {
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fadeInUp {
+    animation-name: fadeInUp;
+  }
+  

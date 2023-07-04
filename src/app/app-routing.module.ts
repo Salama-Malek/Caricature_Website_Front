@@ -6,7 +6,6 @@ import { LoginComponent } from './features/components/login/login.component';
 import { BlogComponent } from './features/components/blog/blog.component';
 import { ArtistListComponent } from './features/components/artist-list/artist-list.component';
 import { CaricatureGalleryComponent } from './features/components/caricature-gallery/caricature-gallery.component';
-import { CaricatureGalleryDetailsComponent } from './features/components/caricature-gallery-details/caricature-gallery-details.component';
 import { ArtistDetailsComponent } from './features/components/artist-details/artist-details.component';
 import { AuthorListComponent } from './features/components/author-list/author-list.component';
 import { AuthorDetailsComponent } from './features/components/author-details/author-details.component';
@@ -26,14 +25,8 @@ const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'author-details/:id', component: AuthorDetailsComponent },
   { path: 'caricature-gallery', component: CaricatureGalleryComponent },
-  {
-    path: 'caricature-gallery-details/:id',
-    component: CaricatureGalleryDetailsComponent,
-  },
-  {
-    path: 'artist/:id',
-    component: ArtistDetailsComponent
-  },
+  
+
   
 
 ];

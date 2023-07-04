@@ -1,57 +1,107 @@
 <div class="card-deck">
   <div class="card col-lg-12 px-0 mb-4">
     <div class="card-body">
-      <h5 class="card-title">Users</h5>
+      <h5 class="card-title">User Management</h5>
+
+     
+      <!-- Edit User Modal -->
+      <div class="modal" [ngClass]="{ 'd-block': displayEditModal }">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Edit User</h5>
+              <button type="button" class="close" (click)="closeEditModal()">
+                <span>&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form (submit)="saveUserChanges()">
+                <div class="form-group">
+                  <label for="editFirstName">First Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="editFirstName"
+                    name="editFirstName"
+                    [(ngModel)]="editedUser.firstName"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="editLastName">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="editLastName"
+                    name="editLastName"
+                    [(ngModel)]="editedUser.lastName"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="editEmail">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="editEmail"
+                    name="editEmail"
+                    [(ngModel)]="editedUser.email"
+                    required
+                  />
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    (click)="cancelEditing()"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="table-responsive">
-        <table class="table center-aligned-table">
+        <table class="table">
           <thead>
             <tr class="text-primary">
-              <th>Name</th>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Email</th>
-              <th>Password</th>
-              <th></th>
               <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users" class="">
+            <tr *ngFor="let user of users">
+              <td>{{ user._id }}</td>
               <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
               <td>{{ user.email }}</td>
-              <td>{{ user.password }}</td>
               <td>
-                <button class="btn btn-primary btn-sm w-50" (click)="startEditing(user)">Edit</button>
+                <button
+                  class="btn btn-primary btn-sm w-50%"
+                  (click)="startEditing(user)"
+                >
+                  Edit
+                </button>
               </td>
               <td>
-                <button class="btn btn-danger btn-sm w-50" (click)="deleteUser(user)">Delete</button>
+                <button
+                  class="btn btn-danger btn-sm w-50%"
+                  (click)="deleteUser(user)"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="editedUser" class="card-deck">
-  <div class="card col-lg-12 px-0 mb-4">
-    <div class="card-body">
-      <h5 class="card-title">Edit User</h5>
-      <div class="form-group">
-        <label for="editFirstName">First Name:</label>
-        <input type="text" class="form-control" id="editFirstName" [(ngModel)]="editedUser.firstName">
-      </div>
-      <div class="form-group">
-        <label for="editEmail">Email:</label>
-        <input type="text" class="form-control" id="editEmail" [(ngModel)]="editedUser.email">
-      </div>
-      <div class="form-group">
-        <label for="editPassword">Password:</label>
-        <input type="password" class="form-control" id="editPassword" [(ngModel)]="editedUser.password">
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" (click)="saveUserChanges()">Save Changes</button>
-        <button class="btn btn-secondary" (click)="cancelEditing()">Cancel</button>
       </div>
     </div>
   </div>

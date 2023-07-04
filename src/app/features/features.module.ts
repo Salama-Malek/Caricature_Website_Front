@@ -4,7 +4,6 @@ import { ArtistDetailsComponent } from './components/artist-details/artist-detai
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { CaricatureGalleryComponent } from './components/caricature-gallery/caricature-gallery.component';
-import { CaricatureGalleryDetailsComponent } from './components/caricature-gallery-details/caricature-gallery-details.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -20,7 +19,6 @@ import { CharacterComponent } from './components/character/character.component';
     ArtistListComponent,
     BlogComponent,
     CaricatureGalleryComponent,
-    CaricatureGalleryDetailsComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
@@ -36,7 +34,6 @@ import { CharacterComponent } from './components/character/character.component';
     ArtistListComponent,
     BlogComponent,
     CaricatureGalleryComponent,
-    CaricatureGalleryDetailsComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,

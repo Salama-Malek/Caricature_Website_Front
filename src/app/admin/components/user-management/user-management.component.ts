@@ -5,13 +5,15 @@ import { User } from 'src/app/features/Interfaces/user';
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
-  styleUrls: ['./user-management.component.css']
+  styleUrls: ['./user-management.component.css'],
 })
 export class UserManagementComponent implements OnInit {
   users: User[] = [];
-  editedUser: User | undefined;
+  editedUser = {} as User;
+  displayEditModal: boolean = false;
+  newUser!: { firstName: string; lastName: string; email: string };
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.loadUsers();
@@ -21,31 +23,43 @@ export class UserManagementComponent implements OnInit {
     this.userService.getAllUsers().subscribe(
       (users: User[]) => {
         this.users = users;
+        console.log(this.users);
       },
       (error: any) => {
-        console.log(error);
+        console.error('Error loading users:', error);
       }
     );
   }
 
-  startEditing(user: User): void {
+  startEditing(user: any) {
+    this.editedUser = { ...user };
+    this.displayEditModal = true;
+  }
+
+  closeEditModal() {
+    this.displayEditModal = false;
+  }
+
+  openEditModal(user: User): void {
     this.editedUser = { ...user }; // Create a copy of the user to avoid modifying the original
   }
 
-  cancelEditing(): void {
-    this.editedUser = undefined;
+  cancelEditing() {
+    this.editedUser = {} as User;
+    this.closeEditModal();
   }
 
   saveUserChanges(): void {
     if (this.editedUser) {
       this.userService.updateUser(this.editedUser).subscribe(
         (response: any) => {
-          console.log(response);
-          this.editedUser = undefined;
+          console.log('User updated:', response);
+          this.editedUser = {} as User;
           this.loadUsers();
+          this.closeEditModal();
         },
         (error: any) => {
-          console.log(error);
+          console.error('Error updating user:', error);
         }
       );
     }
@@ -54,11 +68,11 @@ export class UserManagementComponent implements OnInit {
   deleteUser(user: User): void {
     this.userService.deleteUser(user._id).subscribe(
       (response: any) => {
-        console.log(response);
+        console.log('User deleted:', response);
         this.loadUsers();
       },
       (error: any) => {
-        console.log(error);
+        console.error('Error deleting user:', error);
       }
     );
   }

@@ -13,6 +13,10 @@ export class CaricatureService {
 
     constructor(private http: HttpClient, private AuthenticationService: AuthenticationService) { }
 
+  getHeaders(): { [header: string]: string } {
+    return { "access-token": `${this.AuthenticationService.getToken()}` };
+  }
+
     headers = { "access-token": `${this.AuthenticationService.getToken()}` };
     requestOptions = { headers: this.headers };
 
@@ -21,18 +25,45 @@ export class CaricatureService {
         return this.http.get<Caricature[]>(url, this.requestOptions);
     }
 
-    addCaricature(caricature: Caricature): Observable<Caricature> {
+
+    createCaricature(caricature: any): Observable<Caricature> {
         const url = `${this.baseUrl}/caricature`; // Use the updated URL
-        return this.http.post<Caricature>(url, caricature, this.requestOptions);
-    }
+        const requestOptions = { headers: this.getHeaders() };
+        return this.http.post<Caricature>(url, caricature, requestOptions);
+      }
+   
 
-    updateCaricature(caricature: Caricature, id: string): Observable<any> {
-        const url = `${this.baseUrl}/caricature/${id}`; // Use the updated URL
-        return this.http.put(url, caricature, this.requestOptions);
-    }
 
-    deleteCaricature(id: string): Observable<Caricature> {
-        const url = `${this.baseUrl}/caricature/${id}`; // Use the updated URL
-        return this.http.delete<Caricature>(url, this.requestOptions);
-    }
+      getCaricatureById(id: string): Observable<Caricature> {
+        const url = `${this.baseUrl}/caricature/${id}`;
+        const requestOptions = { headers: this.getHeaders() };
+        return this.http.get<Caricature>(url, requestOptions);
+      }
+    
+     
+    
+      updateCaricature(id: string, caricature: Caricature): Observable<Caricature> {
+        const url = `${this.baseUrl}/caricature/${id}`;
+        const requestOptions = { headers: this.getHeaders() };
+        return this.http.put<Caricature>(url, caricature, requestOptions);
+      }
+
+    
+      deleteCaricature(id: string): Observable<void> {
+        const url = `${this.baseUrl}/caricature/${id}`;
+        const requestOptions = { headers: this.getHeaders() };
+        return this.http.delete<void>(url, requestOptions);
+      }
+     
 }
+
+
+
+
+
+
+
+
+   
+
+   
