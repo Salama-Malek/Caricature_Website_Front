@@ -11,6 +11,8 @@ import { AuthorListComponent } from './features/components/author-list/author-li
 import { AuthorDetailsComponent } from './features/components/author-details/author-details.component';
 import { CharacterComponent } from './features/components/character/character.component';
 import { ContactUsComponent } from './shared/components/contact-us/contact-us.component';
+import { ProfileComponent } from './features/components/profile/profile.component';
+import { UserGuard } from './shared/guard/user.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,10 +27,7 @@ const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'author-details/:id', component: AuthorDetailsComponent },
   { path: 'caricature-gallery', component: CaricatureGalleryComponent },
-  
-
-  
-
+  { path: 'profile', canActivate: [UserGuard], component: ProfileComponent }
 ];
 
 @NgModule({

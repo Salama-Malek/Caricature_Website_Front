@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     FormsModule,
     RouterModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

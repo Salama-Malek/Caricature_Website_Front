@@ -34,7 +34,7 @@ export class AuthenticationService {
 
   detachToken() {
     this.token = localStorage.getItem("token");
-    this.currentLogUser.next(jwtDecode(this.token));
+    return this.currentLogUser.next(jwtDecode(this.token));
   }
 
 
@@ -55,12 +55,7 @@ export class AuthenticationService {
 
 
   isLoggedIn(): boolean {
-    const currentUserString = localStorage.getItem('currentUser');
-    const currentUser = currentUserString
-      ? JSON.parse(currentUserString)
-      : null;
-
-    return !!currentUser;
+    return localStorage.getItem('token') ? true : false;
   }
 
 

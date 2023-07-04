@@ -12,6 +12,11 @@ import { AppRoutingModule } from '../app-routing.module';
 import { AuthorListComponent } from './components/author-list/author-list.component';
 import { AuthorDetailsComponent } from './components/author-details/author-details.component';
 import { CharacterComponent } from './components/character/character.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProfileComponent } from './components/profile/profile.component';
+
+
 
 @NgModule({
   declarations: [
@@ -25,8 +30,9 @@ import { CharacterComponent } from './components/character/character.component';
     CharacterComponent,
     AuthorListComponent,
     AuthorDetailsComponent,
+    ProfileComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, AppRoutingModule,],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, AppRoutingModule, MatIconModule, MatSnackBarModule,],
   exports: [
     AuthorDetailsComponent,
     AuthorListComponent,

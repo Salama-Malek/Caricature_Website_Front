@@ -702,24 +702,6 @@
     width: 100%!important;
     height: 360px!important;
   }
-
-
-  .favorite-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.favorite-icon {
-  color: white; /* Default color */
-  cursor: pointer;
-  z-index: 999999999;
-}
-
-.favorite-icon.active {
-  color: red; /* Update with your desired active color */
-}
-
   
 
 
