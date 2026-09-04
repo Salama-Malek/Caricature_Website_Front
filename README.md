@@ -104,3 +104,7 @@ src/
 
 - End-to-end testing is not configured; `ng e2e` requires adding a separate package.
 - The `authentication.service.ts` base URL is a local development placeholder and should be externalized (e.g., environment files) before production use.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
